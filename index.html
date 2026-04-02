@@ -417,58 +417,6 @@
   }
   .calc-breakdown { font-size: 13px; color: var(--muted); line-height: 1.8; }
 
-  /* TEACHER VIEW */
-  .teacher-banner {
-    background: var(--purple);
-    color: white;
-    padding: 12px 24px;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .teacher-banner span { font-size: 16px; }
-
-  .student-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 24px;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    transition: background 0.12s;
-  }
-  .student-card:hover { background: var(--bg); }
-  .avatar {
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    font-weight: 600;
-    flex-shrink: 0;
-  }
-  .student-name { font-size: 14px; font-weight: 500; }
-  .student-sub { font-size: 12px; color: var(--muted); }
-  .mini-bar {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: var(--muted);
-  }
-  .mini-bar-track {
-    width: 80px; height: 5px;
-    background: var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .mini-bar-fill {
-    height: 100%;
-    border-radius: 3px;
-    background: var(--green);
-  }
-
   /* SECTIONS */
   .section { display: none; }
   .section.active { display: block; }
@@ -531,48 +479,43 @@
     </div>
     <div class="sidebar-nav">
       <div class="nav-section">Overview</div>
-      <div class="nav-item active" onclick="showSection('overview')">
+      <div class="nav-item active" onclick="showSection('overview', this)">
         <span class="dot"></span> Dashboard
       </div>
 
       <div class="nav-section">Weekly Progress</div>
-      <div class="nav-item" onclick="showSection('weekly')">
+      <div class="nav-item" onclick="showSection('weekly', this)">
         <span class="dot"></span> Week-by-Week
         <span class="progress-pill" id="weekly-pill">0/8</span>
       </div>
 
       <div class="nav-section">Knowledge</div>
-      <div class="nav-item" onclick="showSection('innovation')">
+      <div class="nav-item" onclick="showSection('innovation', this)">
         <span class="dot"></span> Design Thinking
         <span class="progress-pill" id="innov-pill">0%</span>
       </div>
-      <div class="nav-item" onclick="showSection('business')">
+      <div class="nav-item" onclick="showSection('business', this)">
         <span class="dot"></span> Business Integration
         <span class="progress-pill" id="biz-pill">0%</span>
       </div>
-      <div class="nav-item" onclick="showSection('leadership')">
+      <div class="nav-item" onclick="showSection('leadership', this)">
         <span class="dot"></span> Leadership
         <span class="progress-pill" id="lead-pill">0%</span>
       </div>
 
       <div class="nav-section">Assessments</div>
-      <div class="nav-item" onclick="showSection('pitches')">
+      <div class="nav-item" onclick="showSection('pitches', this)">
         <span class="dot"></span> Progress Pitches
         <span class="progress-pill" id="pitch-pill">0/5</span>
       </div>
-      <div class="nav-item" onclick="showSection('deliverables')">
+      <div class="nav-item" onclick="showSection('deliverables', this)">
         <span class="dot"></span> Deliverables
       </div>
-      <div class="nav-item" onclick="showSection('grading')">
+      <div class="nav-item" onclick="showSection('grading', this)">
         <span class="dot"></span> Grade Calculator
       </div>
-      <div class="nav-item" onclick="showSection('rubric')">
+      <div class="nav-item" onclick="showSection('rubric', this)">
         <span class="dot"></span> Assessment Rubrics
-      </div>
-
-      <div class="nav-section">Teacher View</div>
-      <div class="nav-item" onclick="showSection('teacher')">
-        <span class="dot"></span> Monitor Students
       </div>
     </div>
   </nav>
@@ -1640,124 +1583,6 @@
       </div>
     </div>
 
-    <!-- ===== TEACHER VIEW ===== -->
-    <div class="section" id="section-teacher">
-      <div class="teacher-banner">
-        <span>👩‍🏫</span>
-        Teacher monitoring view — overview of student progress across all module sections
-      </div>
-      <div class="content">
-        <div class="section-hero">
-          <h2>Student Progress Monitor</h2>
-          <p>Demo view of how student progress would appear. In a live deployment, this would connect to student accounts.</p>
-        </div>
-
-        <div class="alert info" style="margin-bottom:24px">
-          <span class="alert-icon">ℹ</span>
-          <div>This is a demonstration of the teacher monitoring interface. In a connected deployment, each student's checklist data would be visible here, alongside pitch attendance and logbook notes.</div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon" style="background:var(--purple-light)">👥</div>
-            <div class="card-header-text"><h3>Group Overview — Hotel Amsterdam</h3><p>6 project groups · Week 4 of 8</p></div>
-          </div>
-          <div>
-            <div class="student-card">
-              <div class="avatar" style="background:var(--teal-light);color:var(--teal)">JV</div>
-              <div>
-                <div class="student-name">Group 1 — Jana Vermeer et al.</div>
-                <div class="student-sub">Pitches 1–2 complete · Pitch 3 upcoming</div>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:52%"></div></div>
-                52%
-              </div>
-            </div>
-            <div class="student-card">
-              <div class="avatar" style="background:var(--accent-light);color:var(--accent)">MK</div>
-              <div>
-                <div class="student-name">Group 2 — Mohammed Khalil et al.</div>
-                <div class="student-sub">Pitches 1–2 complete · On track</div>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:61%"></div></div>
-                61%
-              </div>
-            </div>
-            <div class="student-card">
-              <div class="avatar" style="background:var(--amber-light);color:var(--amber)">SL</div>
-              <div>
-                <div class="student-name">Group 3 — Sara Linden et al.</div>
-                <div class="student-sub">⚠ Pitch 1 feedback: define stage needs work</div>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:38%;background:var(--amber)"></div></div>
-                38%
-              </div>
-            </div>
-            <div class="student-card">
-              <div class="avatar" style="background:var(--green-light);color:var(--green)">TP</div>
-              <div>
-                <div class="student-name">Group 4 — Tom Pieters et al.</div>
-                <div class="student-sub">Pitches 1–2 complete · Ahead of schedule</div>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:74%"></div></div>
-                74%
-              </div>
-            </div>
-            <div class="student-card">
-              <div class="avatar" style="background:var(--coral-light);color:var(--coral)">AB</div>
-              <div>
-                <div class="student-name">Group 5 — Aiko Brouwers et al.</div>
-                <div class="student-sub">⚠ Learning goals not yet submitted (Week 2)</div>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:29%;background:var(--red)"></div></div>
-                29%
-              </div>
-            </div>
-            <div class="student-card">
-              <div class="avatar" style="background:var(--purple-light);color:var(--purple)">NR</div>
-              <div>
-                <div class="student-name">Group 6 — Nina Roosen et al.</div>
-                <div class="student-sub">Pitch 1 complete · On track</div>
-              </div>
-              <div class="mini-bar">
-                <div class="mini-bar-track"><div class="mini-bar-fill" style="width:45%"></div></div>
-                45%
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <div class="card-icon" style="background:var(--amber-light)">⚠</div>
-            <div class="card-header-text"><h3>Flags & Alerts</h3><p>Items requiring teacher attention</p></div>
-          </div>
-          <div class="checklist">
-            <div class="check-item" style="cursor:default">
-              <span class="status-dot dot-amber"></span>
-              <span class="check-text">Group 5: Leadership learning goals not submitted — Week 2 deadline passed</span>
-              <span class="check-tag" style="background:var(--amber-light);color:var(--amber)">Action needed</span>
-            </div>
-            <div class="check-item" style="cursor:default">
-              <span class="status-dot dot-amber"></span>
-              <span class="check-text">Group 3: Define stage insufficient at Pitch 1 — monitor closely at Pitch 2</span>
-              <span class="check-tag" style="background:var(--amber-light);color:var(--amber)">Monitor</span>
-            </div>
-            <div class="check-item" style="cursor:default">
-              <span class="status-dot dot-green"></span>
-              <span class="check-text">Group 4: Ahead of schedule — concept already well defined at Pitch 2</span>
-              <span class="check-tag" style="background:var(--green-light);color:var(--green)">Positive</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer">
       Module 10 Business Improvement · Zuyd Hogeschool · Progress is saved in your browser
     </div>
@@ -1781,17 +1606,18 @@ function toggle(el) {
 }
 
 // NAVIGATION
-function showSection(id) {
+function showSection(id, navEl) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('section-' + id).classList.add('active');
-  event.currentTarget.classList.add('active');
+  const section = document.getElementById('section-' + id);
+  if (section) section.classList.add('active');
+  if (navEl) navEl.classList.add('active');
   const titles = {
     overview: 'Dashboard', weekly: 'Week-by-Week Progress',
     innovation: 'Design Thinking', business: 'Business Integration',
     leadership: 'Leadership Development', pitches: 'Progress Pitches',
     deliverables: 'Deliverables', grading: 'Grade Calculator',
-    rubric: 'Assessment Rubrics', teacher: 'Monitor Students'
+    rubric: 'Assessment Rubrics'
   };
   document.getElementById('topbar-title').textContent = titles[id] || id;
   window.scrollTo(0, 0);
@@ -1822,32 +1648,32 @@ function updateProgress() {
   const pitchSection = document.getElementById('section-pitches');
   const pitchChecked = pitchSection.querySelectorAll('.check-item.checked').length;
   const pitchAll = pitchSection.querySelectorAll('.check-item').length;
-  const pitchesDone = Math.round(pitchChecked / pitchAll * 5);
+  const pitchesDone = pitchAll ? Math.round(pitchChecked / pitchAll * 5) : 0;
   document.getElementById('pitch-pill').textContent = Math.min(pitchesDone, 5) + '/5';
 
   // Innovation
   const innovSection = document.getElementById('section-innovation');
   const innovChecked = innovSection.querySelectorAll('.check-item.checked').length;
   const innovAll = innovSection.querySelectorAll('.check-item').length;
-  document.getElementById('innov-pill').textContent = Math.round(innovChecked / innovAll * 100) + '%';
+  document.getElementById('innov-pill').textContent = (innovAll ? Math.round(innovChecked / innovAll * 100) : 0) + '%';
 
   // Business
   const bizSection = document.getElementById('section-business');
   const bizChecked = bizSection.querySelectorAll('.check-item.checked').length;
   const bizAll = bizSection.querySelectorAll('.check-item').length;
-  document.getElementById('biz-pill').textContent = Math.round(bizChecked / bizAll * 100) + '%';
+  document.getElementById('biz-pill').textContent = (bizAll ? Math.round(bizChecked / bizAll * 100) : 0) + '%';
 
   // Leadership
   const leadSection = document.getElementById('section-leadership');
   const leadChecked = leadSection.querySelectorAll('.check-item.checked').length;
   const leadAll = leadSection.querySelectorAll('.check-item').length;
-  document.getElementById('lead-pill').textContent = Math.round(leadChecked / leadAll * 100) + '%';
+  document.getElementById('lead-pill').textContent = (leadAll ? Math.round(leadChecked / leadAll * 100) : 0) + '%';
 
   // Weekly
   const weeklySection = document.getElementById('section-weekly');
   const weeklyChecked = weeklySection.querySelectorAll('.check-item.checked').length;
   const weeklyAll = weeklySection.querySelectorAll('.check-item').length;
-  document.getElementById('weekly-pill').textContent = Math.round(weeklyChecked / weeklyAll * 8) + '/8';
+  document.getElementById('weekly-pill').textContent = (weeklyAll ? Math.round(weeklyChecked / weeklyAll * 8) : 0) + '/8';
 }
 
 // GRADE CALCULATOR
@@ -1877,6 +1703,7 @@ function calcGrade() {
   else if (bc === 6) step2 = step1;
   else if (bc === 8) step2 = Math.min(10, step1 * 1.1);
   else if (bc === 10) step2 = Math.min(10, step1 * 1.2);
+  else step2 = step1; // fallback: no change for unexpected value
 
   // Step 3: individual contribution
   let step3;
@@ -1884,6 +1711,7 @@ function calcGrade() {
   else if (ic === 6) step3 = step2;
   else if (ic === 8) step3 = Math.min(10, step2 + 0.5);
   else if (ic === 10) step3 = Math.min(10, step2 + 1.0);
+  else step3 = step2; // fallback: no change for unexpected value
   step3 = Math.max(1, step3);
 
   const final = step3.toFixed(1);
